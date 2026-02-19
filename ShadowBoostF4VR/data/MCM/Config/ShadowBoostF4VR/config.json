@@ -1,0 +1,315 @@
+{
+    "modName": "ShadowBoostF4VR",
+    "displayName": "VR Shadow Boost",
+    "minMcmVersion": 1,
+    "content": [
+        {
+            "text": "Dynamic FPS-Based Quality",
+            "type": "section"
+        },
+        {
+            "text": "Automatically adjusts shadow distance, LOD, grass, and draw distance based on real-time FPS to maintain your target frame rate. Cascade expansion (2 to 4) is handled by the version.dll proxy.",
+            "type": "text"
+        },
+        {
+            "type": "spacer"
+        },
+        {
+            "text": "Performance",
+            "type": "section"
+        },
+        {
+            "id": "bAutoAdjust:Main",
+            "text": "Allow automatic settings adjustment",
+            "type": "switcher",
+            "help": "If turned on, Shadowboost will automatically adjust shadow/lod/grass/god rays settings to achieve the target FPS.",
+            "valueOptions": {
+                "sourceType": "ModSettingBool"
+            }
+        },
+        {
+            "id": "fFpsTarget:Main",
+            "text": "Target FPS",
+            "type": "slider",
+            "help": "Target frame rate. The plugin adjusts quality to maintain this FPS. Default: 90 (VR native).",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 30,
+                "max": 144,
+                "step": 1
+            }
+        },
+        {
+            "id": "fFpsDelay:Main",
+            "text": "Adjustment Delay (frames)",
+            "type": "slider",
+            "help": "Frames between quality adjustments. Higher = smoother but slower response. Lower = more responsive but may flicker. Default: 10.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 1,
+                "max": 30,
+                "step": 1
+            }
+        },
+        {
+            "type": "spacer"
+        },
+        {
+            "text": "Shadow Distance",
+            "type": "section"
+        },
+        {
+            "id": "bEnable:Shadow",
+            "text": "Enable Dynamic Shadows",
+            "type": "switcher",
+            "help": "Enable dynamic shadow distance adjustment based on FPS.",
+            "valueOptions": {
+                "sourceType": "ModSettingBool"
+            }
+        },
+        {
+            "id": "fDynamicValueFactor:Shadow",
+            "text": "Shadow Factor",
+            "type": "slider",
+            "help": "How aggressively shadow distance changes. Higher = faster response. Default: 100.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 1,
+                "max": 500,
+                "step": 10
+            }
+        },
+        {
+            "id": "fMinDistance:Shadow",
+            "text": "Min Shadow Distance",
+            "type": "slider",
+            "help": "Minimum shadow draw distance (game units). Default: 2000.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 500,
+                "max": 10000,
+                "step": 500
+            }
+        },
+        {
+            "id": "fMaxDistance:Shadow",
+            "text": "Max Shadow Distance",
+            "type": "slider",
+            "help": "Maximum shadow draw distance (game units). Values too high may cause crashes with LOD objects. Default: 8000.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 2000,
+                "max": 15000,
+                "step": 500
+            }
+        },
+        {
+            "type": "spacer"
+        },
+        {
+            "text": "LOD Fade Multipliers",
+            "type": "section"
+        },
+        {
+            "id": "bEnable:Lod",
+            "text": "Enable Dynamic LOD",
+            "type": "switcher",
+            "help": "Enable dynamic LOD fade multiplier adjustment based on FPS.",
+            "valueOptions": {
+                "sourceType": "ModSettingBool"
+            }
+        },
+        {
+            "id": "fDynamicValueFactor:Lod",
+            "text": "LOD Factor",
+            "type": "slider",
+            "help": "How aggressively LOD multipliers change. Default: 0.1.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 0.01,
+                "max": 1.0,
+                "step": 0.01
+            }
+        },
+        {
+            "id": "fLODFadeOutMultObjectsMin:Lod",
+            "text": "Objects LOD Min",
+            "type": "slider",
+            "help": "Minimum object LOD fade multiplier. Default: 4.5.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 1,
+                "max": 15,
+                "step": 0.5
+            }
+        },
+        {
+            "id": "fLODFadeOutMultObjectsMax:Lod",
+            "text": "Objects LOD Max",
+            "type": "slider",
+            "help": "Maximum object LOD fade multiplier. Default: 10.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 1,
+                "max": 30,
+                "step": 0.5
+            }
+        },
+        {
+            "id": "fLODFadeOutMultItemsMin:Lod",
+            "text": "Items LOD Min",
+            "type": "slider",
+            "help": "Minimum item LOD fade multiplier. Default: 2.5.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 1,
+                "max": 15,
+                "step": 0.5
+            }
+        },
+        {
+            "id": "fLODFadeOutMultItemsMax:Lod",
+            "text": "Items LOD Max",
+            "type": "slider",
+            "help": "Maximum item LOD fade multiplier. Default: 8.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 1,
+                "max": 30,
+                "step": 0.5
+            }
+        },
+        {
+            "id": "fLODFadeOutMultActorsMin:Lod",
+            "text": "Actors LOD Min",
+            "type": "slider",
+            "help": "Minimum actor LOD fade multiplier. Default: 6.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 1,
+                "max": 20,
+                "step": 0.5
+            }
+        },
+        {
+            "id": "fLODFadeOutMultActorsMax:Lod",
+            "text": "Actors LOD Max",
+            "type": "slider",
+            "help": "Maximum actor LOD fade multiplier. Default: 15.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 1,
+                "max": 40,
+                "step": 0.5
+            }
+        },
+        {
+            "type": "spacer"
+        },
+        {
+            "text": "Grass Distance",
+            "type": "section"
+        },
+        {
+            "id": "bEnable:Grass",
+            "text": "Enable Dynamic Grass",
+            "type": "switcher",
+            "help": "Enable dynamic grass fade distance adjustment based on FPS.",
+            "valueOptions": {
+                "sourceType": "ModSettingBool"
+            }
+        },
+        {
+            "id": "fDynamicValueFactor:Grass",
+            "text": "Grass Factor",
+            "type": "slider",
+            "help": "How aggressively grass distance changes. Default: 100.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 1,
+                "max": 500,
+                "step": 10
+            }
+        },
+        {
+            "id": "fGrassStartFadeDistanceMin:Grass",
+            "text": "Min Grass Distance",
+            "type": "slider",
+            "help": "Minimum grass fade distance (game units). Default: 3500.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 500,
+                "max": 10000,
+                "step": 500
+            }
+        },
+        {
+            "id": "fGrassStartFadeDistanceMax:Grass",
+            "text": "Max Grass Distance",
+            "type": "slider",
+            "help": "Maximum grass fade distance (game units). Default: 7000.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 2000,
+                "max": 20000,
+                "step": 500
+            }
+        },
+        {
+            "type": "spacer"
+        },
+        {
+            "text": "Block Level (Draw Distance)",
+            "type": "section"
+        },
+        {
+            "id": "bEnable:TerrainManager",
+            "text": "Enable Dynamic Draw Distance",
+            "type": "switcher",
+            "help": "Enable dynamic block level (terrain draw distance) adjustment. WARNING: May cause noticeable pop-in in VR. Disabled by default.",
+            "valueOptions": {
+                "sourceType": "ModSettingBool"
+            }
+        },
+        {
+            "type": "spacer"
+        },
+        {
+            "text": "God Rays",
+            "type": "section"
+        },
+        {
+            "id": "bEnable:GodRays",
+            "text": "Enable God Rays Override",
+            "type": "switcher",
+            "help": "Override god rays settings with values below. Static (not dynamic). Disabled by default for VR performance.",
+            "valueOptions": {
+                "sourceType": "ModSettingBool"
+            }
+        },
+        {
+            "id": "iQuality:GodRays",
+            "text": "God Rays Quality",
+            "type": "slider",
+            "help": "Volumetric lighting quality level (0-3). Default: 3.",
+            "valueOptions": {
+                "sourceType": "ModSettingInt",
+                "min": 0,
+                "max": 3,
+                "step": 1
+            }
+        },
+        {
+            "id": "fScale:GodRays",
+            "text": "God Rays Scale",
+            "type": "slider",
+            "help": "Volumetric lighting intensity. Default: 0.4.",
+            "valueOptions": {
+                "sourceType": "ModSettingFloat",
+                "min": 0.0,
+                "max": 2.0,
+                "step": 0.1
+            }
+        }
+    ]
+}
